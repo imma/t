@@ -4,16 +4,10 @@ function version {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_ghi="$(ghi --version 2>&- | awk 'NR == 1 {print $3}' || true)"
-  local ver_git="$(hub --version 2>&- | awk 'NR == 1 {print $3}' || true)"
-  local ver_hub="$(hub --version 2>&- | awk 'NR == 2 {print $3}' || true)"
-  local ver_gitflow="$(git-flow version 2>&- | awk 'NR == 1 {print $1}' || true)"
+  local ver_t="$(t version 2>&- || true)"
   jq -n \
-    --arg ghi "$ver_ghi" \
-    --arg git "$ver_git" \
-    --arg hub "$ver_hub" \
-    --arg gitflow "$ver_gitflow" \
-    '{ghi: $ghi, git: $git, hub: $hub, gitflow: $gitflow}'
+    --arg t "$ver_t" \
+    '{t: $t}'
 }
 
 version "$@"
