@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function t_profile {
+  local shome="${_t_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$PATH"
+}
+
+t_profile
