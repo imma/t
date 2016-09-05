@@ -4,7 +4,7 @@ function version {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_t="$(t version 2>&- || true)"
+  local ver_t="$(t version 2>/dev/null || true)"
   jq -n \
     --arg t "$ver_t" \
     '{t: $t}'
