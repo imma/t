@@ -4,7 +4,7 @@ function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  block compile bundler --local
+  block compile bundler
   mkdir -p "$shome/bin"
   ln -nfs ../vendor/bundle/bin/t "$shome/bin/"
 }
